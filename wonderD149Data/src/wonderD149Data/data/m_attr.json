@@ -1,0 +1,56 @@
+{
+    "M_002": {
+        "D149.M002": "Births"
+    },
+    "M_007": {
+        "D149.M007": "Percent of Total Births"
+    },
+    "M_070": {
+        "D149.M070": "Average Age of Mother (years)"
+    },
+    "M_071": {
+        "D149.M071": "Average Age of Mother (years) Standard Deviation"
+    },
+    "M_080": {
+        "D149.M080": "Average OE Gestational Age (weeks)"
+    },
+    "M_081": {
+        "D149.M081": "Average OE Gestational Age (weeks) Standard Deviation"
+    },
+    "M_090": {
+        "D149.M091": "Average LMP Gestational Age (weeks)"
+    },
+    "M_091": {
+        "D149.M091": "Average LMP Gestational Age (weeks) Standard Deviation"
+    },
+    "M_095": {
+        "D149.M095": "Average Birth Weight (grams)"
+    },
+    "M_096": {
+        "D149.M096": "Average Birth Weight (grams) Standard Deviation"
+    },
+    "M_100": {
+        "D149.M100": "Average Pre-pregnancy BMI"
+    },
+    "M_101": {
+        "D149.M101": "Average Pre-pregnancy BMI Standard Deviation"
+    },
+    "M_110": {
+        "D149.M110": "Average Number of Prenatal Visits"
+    },
+    "M_111": {
+        "D149.M111": "Average Number of Prenatal Visits Standard Deviation"
+    },
+    "M_120": {
+        "D149.M120": "Average Interval Since Last Live Birth (months)"
+    },
+    "M_121": {
+        "D149.M121": "Average Interval Since Last Live Birth (months) Standard Deviation"
+    },
+    "M_130": {
+        "D149.M130": "Average Interval Since Last Other Pregnancy Outcome (months)"
+    },
+    "M_131": {
+        "D149.M130": "Average Interval Since Last Other Pregnancy Outcome (months) Standard Deviation"
+    }
+}

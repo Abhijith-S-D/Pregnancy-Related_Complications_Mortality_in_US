@@ -1,0 +1,550 @@
+{
+    "D149.V154": {
+        "name": "2013 Metro/Nonmetro",
+        "category": "Maternal Residence"
+    },
+    "D149.V155": {
+        "name": "2006 Metro/Nonmetro",
+        "category": "Maternal Residence"
+    },
+    "D149.V156": {
+        "name": "2006 Urbanization",
+        "category": "Maternal Residence"
+    },
+    "D149.V42": {
+        "name": "Mother's Single Race 6",
+        "category": "Maternal characteristics"
+    },
+    "D149.V49": {
+        "name": "Mother's Single Race 15",
+        "category": "Maternal characteristics"
+    },
+    "D149.V50": {
+        "name": "Mother's Single/Multi Race 31",
+        "category": "Maternal characteristics"
+    },
+    "D149.V43": {
+        "name": "Mother's Hispanic Origin",
+        "category": "Maternal characteristics"
+    },
+    "D149.V4": {
+        "name": "Mother's Expanded Hispanic Origin",
+        "category": "Maternal characteristics"
+    },
+    "D149.V1": {
+        "name": "Age of Mother 9",
+        "category": "Maternal characteristics"
+    },
+    "D149.V38": {
+        "name": "Age of Mother 13",
+        "category": "Maternal characteristics"
+    },
+    "D149.V5": {
+        "name": "Mother's Education",
+        "category": "Maternal characteristics"
+    },
+    "D149.V27": {
+        "name": "Marital Status",
+        "category": "Maternal characteristics"
+    },
+    "D149.V51": {
+        "name": "Paternity Acknowledgment (if mother unmarried)",
+        "category": "Maternal characteristics"
+    },
+    "D149.V48": {
+        "name": "Mother's Nativity",
+        "category": "Maternal characteristics"
+    },
+    "D149.V147": {
+        "name": "Mother's Birth Country",
+        "category": "Maternal characteristics"
+    },
+    "D149.V47": {
+        "name": "Mother's Birth State",
+        "category": "Maternal characteristics"
+    },
+    "D149.V54": {
+        "name": "Father's Single Race 6",
+        "category": "Paternal characteristics"
+    },
+    "D149.V55": {
+        "name": "Father's Single Race 15",
+        "category": "Paternal characteristics"
+    },
+    "D149.V56": {
+        "name": "Father's Single/Multi Race 31",
+        "category": "Paternal characteristics"
+    },
+    "D149.V53": {
+        "name": "Father's Hispanic Origin",
+        "category": "Paternal characteristics"
+    },
+    "D149.V52": {
+        "name": "Father's Expanded Hispanic Origin",
+        "category": "Paternal characteristics"
+    },
+    "D149.V57": {
+        "name": "Age of Father",
+        "category": "Paternal characteristics"
+    },
+    "D149.V58": {
+        "name": "Father's Education",
+        "category": "Paternal characteristics"
+    },
+    "D149.V60": {
+        "name": "Interval Since Last Live Birth",
+        "category": "Pregnancy history and prenatal care characteristics"
+    },
+    "D149.V61": {
+        "name": "Interval Since Last Other Pregnancy Outcome",
+        "category": "Pregnancy history and prenatal care characteristics"
+    },
+    "D149.V62": {
+        "name": "Interval of Last Pregnancy",
+        "category": "Pregnancy history and prenatal care characteristics"
+    },
+    "D149.V151": {
+        "name": "Prior Births Now Living",
+        "category": "Pregnancy history and prenatal care characteristics"
+    },
+    "D149.V152": {
+        "name": "Prior Births Now Dead",
+        "category": "Pregnancy history and prenatal care characteristics"
+    },
+    "D149.V153": {
+        "name": "Prior Other Pregnancy Outcomes",
+        "category": "Pregnancy history and prenatal care characteristics"
+    },
+    "D149.V28": {
+        "name": "Live Birth Order",
+        "category": "Pregnancy history and prenatal care characteristics"
+    },
+    "D149.V59": {
+        "name": "Total Birth Order",
+        "category": "Pregnancy history and prenatal care characteristics"
+    },
+    "D149.V66": {
+        "name": "WIC",
+        "category": "Pregnancy history and prenatal care characteristics"
+    },
+    "D149.V89": {
+        "name": "Successful External Cephalic Version",
+        "category": "Pregnancy history and prenatal care characteristics"
+    },
+    "D149.V90": {
+        "name": "Failed External Cephalic Version",
+        "category": "Pregnancy history and prenatal care characteristics"
+    },
+    "D149.V65": {
+        "name": "Number of Prenatal Visits Recode",
+        "category": "Pregnancy history and prenatal care characteristics"
+    },
+    "D149.V64": {
+        "name": "SNumber of Prenatal Visits",
+        "category": "Pregnancy history and prenatal care characteristics"
+    },
+    "D149.V63": {
+        "name": "Trimester Prenatal Care Began",
+        "category": "Pregnancy history and prenatal care characteristics"
+    },
+    "D149.V8": {
+        "name": "Month Prenatal Care Began",
+        "category": "Pregnancy history and prenatal care characteristics"
+    },
+    "D149.V70": {
+        "name": "Mother's Height in Inches",
+        "category": "Maternal risk factors"
+    },
+    "D149.V71": {
+        "name": "Mother's Pre-pregnancy BMI",
+        "category": "Maternal risk factors"
+    },
+    "D149.V73": {
+        "name": "Mother's Weight Gain Recode",
+        "category": "Maternal risk factors"
+    },
+    "D149.V149": {
+        "name": "Mother's Pre-pregnancy Weight",
+        "category": "Maternal risk factors"
+    },
+    "D149.V150": {
+        "name": "Mother's Delivery Weight",
+        "category": "Maternal risk factors"
+    },
+    "D149.V10": {
+        "name": "Tobacco Use",
+        "category": "Maternal risk factors"
+    },
+    "D149.V143": {
+        "name": "Number of Cigarettes Before Pregnancy Recode",
+        "category": "Maternal risk factors"
+    },
+    "D149.V144": {
+        "name": "Number of Cigarettes 1st Trimester Recode",
+        "category": "Maternal risk factors"
+    },
+    "D149.V140": {
+        "name": "Number of Cigarettes 1st Trimester",
+        "category": "Maternal risk factors"
+    },
+    "D149.V145": {
+        "name": "Number of Cigarettes 2nd Trimester Recode",
+        "category": "Maternal risk factors"
+    },
+    "D149.V141": {
+        "name": "Number of Cigarettes 2nd Trimester",
+        "category": "Maternal risk factors"
+    },
+    "D149.V146": {
+        "name": "Number of Cigarettes 3rd Trimester Recode",
+        "category": "Maternal risk factors"
+    },
+    "D149.V142": {
+        "name": "Number of Cigarettes 3rd Trimester",
+        "category": "Maternal risk factors"
+    },
+    "D149.V74": {
+        "name": "Pre-pregnancy Diabetes",
+        "category": "Pregnancy risk factors"
+    },
+    "D149.V75": {
+        "name": "Gestational Diabetes",
+        "category": "Pregnancy risk factors"
+    },
+    "D149.V16": {
+        "name": "Pre-pregnancy Hypertension",
+        "category": "Pregnancy risk factors"
+    },
+    "D149.V17": {
+        "name": "Gestational Hypertension",
+        "category": "Pregnancy risk factors"
+    },
+    "D149.V18": {
+        "name": "Eclampsia",
+        "category": "Pregnancy risk factors"
+    },
+    "D149.V76": {
+        "name": "Previous Preterm Birth",
+        "category": "Pregnancy risk factors"
+    },
+    "D149.V77": {
+        "name": "Infertility Treatment Used",
+        "category": "Pregnancy risk factors"
+    },
+    "D149.V78": {
+        "name": "Fertility Enhancing Drugs",
+        "category": "Pregnancy risk factors"
+    },
+    "D149.V79": {
+        "name": "Assistive Reproductive Technology",
+        "category": "Pregnancy risk factors"
+    },
+    "D149.V80": {
+        "name": "Previous Cesarean Delivery",
+        "category": "Pregnancy risk factors"
+    },
+    "D149.V81": {
+        "name": "Number of Previous Cesareans",
+        "category": "Pregnancy risk factors"
+    },
+    "D149.V82": {
+        "name": "Risk Factors Checked",
+        "category": "Pregnancy risk factors"
+    },
+    "D149.V83": {
+        "name": "Gonorrhea",
+        "category": "Maternal infections present and/or treated during pregnancy"
+    },
+    "D149.V84": {
+        "name": "Syphilis",
+        "category": "Maternal infections present and/or treated during pregnancy"
+    },
+    "D149.V85": {
+        "name": "Chlamydia",
+        "category": "Maternal infections present and/or treated during pregnancy"
+    },
+    "D149.V86": {
+        "name": "Hepatitis B",
+        "category": "Maternal infections present and/or treated during pregnancy"
+    },
+    "D149.V87": {
+        "name": "Hepatitis C",
+        "category": "Maternal infections present and/or treated during pregnancy"
+    },
+    "D149.V88": {
+        "name": "Infections Checked",
+        "category": "Maternal infections present and/or treated during pregnancy"
+    },
+    "D149.V91": {
+        "name": "Induction of Labor",
+        "category": "Labor characteristics"
+    },
+    "D149.V92": {
+        "name": "Augmentation of Labor",
+        "category": "Labor characteristics"
+    },
+    "D149.V93": {
+        "name": "Steroids",
+        "category": "Labor characteristics"
+    },
+    "D149.V94": {
+        "name": "Antibiotics for Mother",
+        "category": "Labor characteristics"
+    },
+    "D149.V95": {
+        "name": "Chorioamnionitis",
+        "category": "Labor characteristics"
+    },
+    "D149.V96": {
+        "name": "Anesthesia",
+        "category": "Labor characteristics"
+    },
+    "D149.V97": {
+        "name": "Characteristics of Labor Checked",
+        "category": "Labor characteristics"
+    },
+    "D149.V20": {
+        "name": "Year",
+        "category": "Delivery characteristics"
+    },
+    "D149.V25": {
+        "name": "Month",
+        "category": "Delivery characteristics"
+    },
+    "D149.V26": {
+        "name": "Weekday",
+        "category": "Delivery characteristics"
+    },
+    "D149.V44": {
+        "name": "Time of Day",
+        "category": "Delivery characteristics"
+    },
+    "D149.V45": {
+        "name": "Birthplace",
+        "category": "Delivery characteristics"
+    },
+    "D149.V30": {
+        "name": "Birthplace Recode 6",
+        "category": "Delivery characteristics"
+    },
+    "D149.V46": {
+        "name": "Birthplace Recode 3",
+        "category": "Delivery characteristics"
+    },
+    "D149.V29": {
+        "name": "Medical Attendant",
+        "category": "Delivery characteristics"
+    },
+    "D149.V108": {
+        "name": "Mother Transferred",
+        "category": "Delivery characteristics"
+    },
+    "D149.V98": {
+        "name": "Fetal Presentation",
+        "category": "Delivery characteristics"
+    },
+    "D149.V99": {
+        "name": "Final Route and Delivery Method",
+        "category": "Delivery characteristics"
+    },
+    "D149.V101": {
+        "name": "Delivery Method Expanded",
+        "category": "Delivery characteristics"
+    },
+    "D149.V31": {
+        "name": "Delivery Method",
+        "category": "Delivery characteristics"
+    },
+    "D149.V100": {
+        "name": "Trial of Labor Attempted (if cesarean)",
+        "category": "Delivery characteristics"
+    },
+    "D149.V110": {
+        "name": "Source of Payment for Delivery",
+        "category": "Delivery characteristics"
+    },
+    "D149.V109": {
+        "name": "Source of Payment for Delivery Expanded",
+        "category": "Delivery characteristics"
+    },
+    "D149.V102": {
+        "name": "Maternal Transfusion",
+        "category": "Maternal morbidity"
+    },
+    "D149.V103": {
+        "name": "Perineal Laceration",
+        "category": "Maternal morbidity"
+    },
+    "D149.V104": {
+        "name": "Ruptured Uterus",
+        "category": "Maternal morbidity"
+    },
+    "D149.V105": {
+        "name": "Unplanned Hysterectomy",
+        "category": "Maternal morbidity"
+    },
+    "D149.V106": {
+        "name": "Admission to Intensive Care Unit",
+        "category": "Maternal morbidity"
+    },
+    "D149.V107": {
+        "name": "Maternal Morbidity Checked",
+        "category": "Maternal morbidity"
+    },
+    "D149.V32": {
+        "name": "OE Gestational Age Recode 10",
+        "category": "Infant characteristics"
+    },
+    "D149.V33": {
+        "name": "OE Gestational Age Recode 11",
+        "category": "Infant characteristics"
+    },
+    "D149.V34": {
+        "name": "OE Gestational Age Weekly",
+        "category": "Infant characteristics"
+    },
+    "D149.V6": {
+        "name": "LMP Gestational Recode 10",
+        "category": "Infant characteristics"
+    },
+    "D149.V23": {
+        "name": "LMP Gestational Recode 11",
+        "category": "Infant characteristics"
+    },
+    "D149.V24": {
+        "name": "LMP Gestational Age Weekly",
+        "category": "Infant characteristics"
+    },
+    "D149.V3": {
+        "name": "Sex of Infant",
+        "category": "Infant characteristics"
+    },
+    "D149.V7": {
+        "name": "Plurality",
+        "category": "Infant characteristics"
+    },
+    "D149.V115": {
+        "name": "Set Order",
+        "category": "Infant characteristics"
+    },
+    "D149.V9": {
+        "name": "Infant Birth Weight 12",
+        "category": "Infant characteristics"
+    },
+    "D149.V35": {
+        "name": "Infant Birth Weight 14",
+        "category": "Infant characteristics"
+    },
+    "D149.V41": {
+        "name": "Infant Birth Weight 100 gram increments",
+        "category": "Infant characteristics"
+    },
+    "D149.V111": {
+        "name": "Five Minute APGAR Score",
+        "category": "Infant characteristics"
+    },
+    "D149.V112": {
+        "name": "Five Minute APGAR Score Recode",
+        "category": "Infant characteristics"
+    },
+    "D149.V113": {
+        "name": "Ten Minute APGAR Score",
+        "category": "Infant characteristics"
+    },
+    "D149.V114": {
+        "name": "Ten Minute APGAR Score Recode",
+        "category": "Infant characteristics"
+    },
+    "D149.V136": {
+        "name": "Infant Transferred",
+        "category": "Infant characteristics"
+    },
+    "D149.V137": {
+        "name": "Infant Living at Time of Report",
+        "category": "Infant characteristics"
+    },
+    "D149.V138": {
+        "name": "Infant Breastfed at Discharge",
+        "category": "Infant characteristics"
+    },
+    "D149.V116": {
+        "name": "Assisted Ventilation",
+        "category": "Abnormal conditions of newborn"
+    },
+    "D149.V117": {
+        "name": "Assisted Ventilation > 6 hrs",
+        "category": "Abnormal conditions of newborn"
+    },
+    "D149.V118": {
+        "name": "NICU Admission",
+        "category": "Abnormal conditions of newborn"
+    },
+    "D149.V119": {
+        "name": "Surfactant Replacement Therapy",
+        "category": "Abnormal conditions of newborn"
+    },
+    "D149.V120": {
+        "name": "Antibiotics for Suspected Neonatal Sepsis",
+        "category": "Abnormal conditions of newborn"
+    },
+    "D149.V121": {
+        "name": "Seizures",
+        "category": "Abnormal conditions of newborn"
+    },
+    "D149.V122": {
+        "name": "Abnormal Conditions Checked",
+        "category": "Abnormal conditions of newborn"
+    },
+    "D149.V123": {
+        "name": "Anencephaly",
+        "category": "Congenital anomalies of newborn"
+    },
+    "D149.V124": {
+        "name": "Meningomyelocele / Spina Bifida",
+        "category": "Congenital anomalies of newborn"
+    },
+    "D149.V125": {
+        "name": "Cyanotic Congenital Heart Disease",
+        "category": "Congenital anomalies of newborn"
+    },
+    "D149.V126": {
+        "name": "Congenital Diaphragmatic Hernia",
+        "category": "Congenital anomalies of newborn"
+    },
+    "D149.V127": {
+        "name": "Omphalocele",
+        "category": "Congenital anomalies of newborn"
+    },
+    "D149.V128": {
+        "name": "Gastroschisis",
+        "category": "Congenital anomalies of newborn"
+    },
+    "D149.V129": {
+        "name": "Limb Reduction Defect",
+        "category": "Congenital anomalies of newborn"
+    },
+    "D149.V130": {
+        "name": "Cleft Lip with or without Cleft Palate",
+        "category": "Congenital anomalies of newborn"
+    },
+    "D149.V131": {
+        "name": "Cleft Palate Alone",
+        "category": "Congenital anomalies of newborn"
+    },
+    "D149.V132": {
+        "name": "Down Syndrome",
+        "category": "Congenital anomalies of newborn"
+    },
+    "D149.V133": {
+        "name": "Suspected Chromosomal Disorder",
+        "category": "Congenital anomalies of newborn"
+    },
+    "D149.V134": {
+        "name": "Hypospadias",
+        "category": "Congenital anomalies of newborn"
+    },
+    "D149.V135": {
+        "name": "Congenital Anomalies Checked",
+        "category": "Congenital anomalies of newborn"
+    }
+}

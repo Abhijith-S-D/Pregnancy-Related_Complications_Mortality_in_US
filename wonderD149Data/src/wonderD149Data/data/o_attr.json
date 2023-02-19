@@ -1,0 +1,158 @@
+{
+    "O_rate_per": {
+        "1000": "1,000",
+        "10000": "10,000",
+        "100000": "100,000",
+        "1000000": "1,000,000"
+    },
+    "O_precision": {
+        "0": "0",
+        "1": "1",
+        "2": "2",
+        "3": "3",
+        "4": "4",
+        "5": "5",
+        "6": "6",
+        "7": "7",
+        "8": "8",
+        "9": "9"
+    },
+    "O_timeout": {
+        "60": "1",
+        "120": "2",
+        "180": "3",
+        "240": "4",
+        "300": "5",
+        "360": "6",
+        "420": "7",
+        "480": "8",
+        "540": "9",
+        "600": "10",
+        "660": "11",
+        "720": "12",
+        "780": "13",
+        "840": "14",
+        "900": "15"
+    },
+    "O_urban": {
+        "D149.V154": "2013 Metro/Nonmetro",
+        "D149.V155": "2006 Metro/Nonmetro",
+        "D149.V156": "2013 Urbanization",
+        "D149.V157": "2006 Urbanization"
+    },
+    "O_race": {
+        "D149.V42": "Mother's Single Race 6",
+        "D149.V49": "Mother's Single Race 15",
+        "D149.V50": "Mother's Single/Multi Race 31"
+    },
+    "O_m_ethnicity": {
+        "D149.V43": "Mother's Hispanic Origin",
+        "D149.V4": "Mother's Expanded Hispanic Origin"
+    },
+    "O_age": {
+        "D149.V1": "Age of Mother 9",
+        "D149.V38": "Age of Mother 10",
+        "D149.V39": "Age of Mother 13"
+    },
+    "O_frace": {
+        "D149.V54": "Father's Single Race 6",
+        "D149.V55": "Father's Single Race 15",
+        "D149.V56": "Father's Single/Multi Race 31"
+    },
+    "O_f_ethnicity": {
+        "D149.V53": "Father's Hispanic Origin",
+        "D149.V52": "Father's Expanded Hispanic Origin"
+    },
+    "O_prenatal2": {
+        "D149.V65": "Number of Prenatal Visits Recode",
+        "D149.V64": "Number of Prenatal Visits"
+    },
+    "O_prenatal": {
+        "D149.V63": "Trimester Prenatal Care Began",
+        "D149.V8": "Month Prenatal Care Began"
+    },
+    "O_cig_before": {
+        "D149.V143": "Number of Cigarettes Before Pregnancy Recode",
+        "D149.V139": "Number of Cigarettes Before Pregnancy"
+    },
+    "O_cig_trim1": {
+        "D149.V144": "Number of Cigarettes 1st Trimester Recode",
+        "D149.V140": "Number of Cigarettes 1st Trimester"
+    },
+    "O_cig_trim2": {
+        "D149.V145": "Number of Cigarettes 2nd Trimester Recode",
+        "D149.V141": "Number of Cigarettes 2nd Trimester"
+    },
+    "O_cig_trim3": {
+        "D149.V146": "Number of Cigarettes 3rd Trimester Recode",
+        "D149.V142": "Number of Cigarettes 3rd Trimester"
+    },
+    "O_place": {
+        "D149.V45": "Birthplace",
+        "D149.V30": "Birthplace Recode 6",
+        "D149.V46": "Birthplace Recode 3"
+    },
+    "O_delivery": {
+        "D149.V101": "Delivery Method Expanded",
+        "D149.V31": "Delivery Method"
+    },
+    "O_pay": {
+        "D149.V110": "Source of Payment for Delivery",
+        "D149.V109": "Source of Payment for Delivery Expanded"
+    },
+    "O_oe_gestation": {
+        "D149.V32": "OE Gestational Age Recode 10",
+        "D149.V33": "OE Gestational Age Recode 11",
+        "D149.V34": "OE Gestational Age Weekly"
+    },
+    "O_gestation": {
+        "D149.V6": "LMP Gestational Recode 10",
+        "D149.V23": "LMP Gestational Recode 11",
+        "D149.V24": "LMP Gestational Age Weekly"
+    },
+    "O_weight": {
+        "D149.V9": "Infant Birth Weight 12",
+        "D149.V35": "Infant Birth Weight 14",
+        "D149.V41": "Infant Birth Weight 100 gram increments"
+    },
+    "O_apgar5": {
+        "D149.V111": "Five Minute APGAR Score",
+        "D149.V112": "Five Minute APGAR Score Recode"
+    },
+    "O_apgar10": {
+        "D149.V113": "Ten Minute APGAR Score",
+        "D149.V114": "Ten Minute APGAR Score Recode"
+    },
+    "O_location": {
+        "D149.V21": "States",
+        "D149.V22": "Census Regions",
+        "D149.V37": "HHS Regions"
+    },
+    "O_show_totals": {
+        "true": "Show Totals",
+        "false": "Show Totals"
+    },
+    "O_show_zeros": {
+        "true": "Show Zeros",
+        "false": "Show Zeros"
+    },
+    "O_show_suppressed": {
+        "true": "Show suppressed values",
+        "false": "Show suppressed values"
+    },
+    "O_V21_fmode": {
+        "freg": ""
+    },
+    "O_V22_fmode": {
+        "freg": ""
+    },
+    "O_V37_fmode": {
+        "freg": ""
+    },
+    "O_javascript": {
+        "on": ""
+    },
+    "O_oc-sect1-request": {
+        "close": ""
+    }
+}

@@ -1,5 +1,5 @@
-import wonderD149Data.data.helper as hp
-import wonderD149Data.data as dt
+from  .data import helper as hp
+from . import data as dt
 import requests
 # BeautifulSoup library facilitates parsing of XML response
 import bs4 as bs

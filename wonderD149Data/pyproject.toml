@@ -1,0 +1,18 @@
+[project]
+name = "wonderD149Data_abhinomega135"
+version = "0.0.1"
+authors = [
+  { name="Abhijith Dasharathi", email="abhijith.dasharathi@gmail.com" },
+]
+description = "A small package to extract data from CDC Wonder API for Natality data"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/Abhijith-S-D/Pregnancy-Related_Complications_Mortality_in_US"
+"Bug Tracker" = "https://github.com/Abhijith-S-D/Pregnancy-Related_Complications_Mortality_in_US/issues"

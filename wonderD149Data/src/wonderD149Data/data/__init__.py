@@ -1,5 +1,4 @@
-import json
-import pathlib
+import json, pathlib
 
 f = open(str(pathlib.Path(__file__).parent.absolute()) +'/b_attr.json','r')
 B_ATTR = json.load(f)

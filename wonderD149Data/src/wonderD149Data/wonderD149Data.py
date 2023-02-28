@@ -1,10 +1,8 @@
-from  .data import helper as hp
-from . import data as dt
 import requests
-# BeautifulSoup library facilitates parsing of XML response
 import bs4 as bs
-# This library faciliates 2-dimensional array operations and visualization
 import pandas as pd
+from . import data as dt
+from  .data import helper as hp
 
 class WonderD149Data:
     '''

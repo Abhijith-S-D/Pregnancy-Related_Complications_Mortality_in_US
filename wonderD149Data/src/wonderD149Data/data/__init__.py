@@ -1,4 +1,19 @@
-import json, pathlib
+import json, pathlib, logging, sys
+
+
+log = logging.getLogger() #name of logger
+log.setLevel(logging.DEBUG)
+handler = logging.StreamHandler(sys.stdout)
+handler.setLevel(logging.DEBUG)
+
+filehandler = logging.FileHandler('wonderD149Data.log')
+filehandler.setLevel(logging.ERROR)
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(funcName)s - %(levelname)s - %(message)s") # set format
+
+handler.setFormatter(formatter) # setup format
+filehandler.setFormatter(formatter) # setup format
+log.addHandler(handler) # read to go
+log.addHandler(filehandler) # read to go
 
 f = open(str(pathlib.Path(__file__).parent.absolute()) +'/b_attr.json','r')
 B_ATTR = json.load(f)
@@ -27,4 +42,4 @@ del f
 del json
 del pathlib
 
-__all__ = ['B_ATTR','F_ATTR','I_ATTR','M_ATTR','MISC_ATTR','O_ATTR','V_ATTR','helper']
+__all__ = ['B_ATTR','F_ATTR','I_ATTR','M_ATTR','MISC_ATTR','O_ATTR','V_ATTR','log','helper']

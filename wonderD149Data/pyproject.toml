@@ -16,3 +16,11 @@ classifiers = [
 [project.urls]
 "Homepage" = "https://github.com/Abhijith-S-D/Pregnancy-Related_Complications_Mortality_in_US"
 "Bug Tracker" = "https://github.com/Abhijith-S-D/Pregnancy-Related_Complications_Mortality_in_US/issues"
+
+[tool.pytest.ini_options]
+filterwarnings = [
+    "ignore",
+    "ignore::UserWarning",
+    # note the use of single quote below to denote "raw" strings in TOML
+    'ignore:function ham\(\) is deprecated:DeprecationWarning',
+]

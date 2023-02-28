@@ -2,7 +2,7 @@ import requests
 import bs4 as bs
 import pandas as pd
 from . import data as dt
-from  .data import helper as hp
+from  .data import helper as hp, log as logger
 
 class WonderD149Data:
     '''
@@ -38,6 +38,8 @@ class WonderD149Data:
         xml_request += hp.createParameterList(hp.sort_parameters(self.misc_parameters))
         xml_request += "</request-parameters>"
         self.xml_request = xml_request
+        logger.info('the xml sent to api is as below')
+        logger.debug(xml_request)
     
     def getData(self):
         '''A method which returns data from Wonder API'''

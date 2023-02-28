@@ -5,7 +5,7 @@ from bokeh.io import save
 from bokeh.models import Range1d, Circle, NodesAndLinkedEdges, MultiLine,EdgesAndLinkedNodes
 from bokeh.plotting import figure, from_networkx
 from bokeh.palettes import Spectral4
-from ..data import B_ATTR as _B_ATTR, V_ATTR as _V_ATTR, M_ATTR as _M_ATTR, F_ATTR as _F_ATTR, O_ATTR as _O_ATTR, MISC_ATTR as _MISC_ATTR
+from ..data import B_ATTR as _B_ATTR, V_ATTR as _V_ATTR, M_ATTR as _M_ATTR, F_ATTR as _F_ATTR, O_ATTR as _O_ATTR, MISC_ATTR as _MISC_ATTR, log as logger
 from ..wonderD149Data import WonderD149Data
 
 def getGroupByCategories():
@@ -29,8 +29,12 @@ def getCodeDetailsForGivenCategory(category):
 
         Returns a dictionary of variable codes and descriptions
     '''
-    assert isinstance(category,str),f'the parameter of method should be a string but {type(category)} given'
-    assert category in getGroupByCategories(),f'the provided category invalid. It must be among {getGroupByCategories()}'
+    try:
+        assert isinstance(category,str),f'the parameter of method should be a string but {type(category)} given'
+        assert category in getGroupByCategories(),f'the provided category invalid. It must be among {getGroupByCategories()}'
+    except AssertionError as er:
+        logger.error(str(er))
+        raise er
 
     return { x:_B_ATTR[x]['name'] for x in _B_ATTR if _B_ATTR[x]['category']==category}
 
@@ -46,8 +50,12 @@ def getFilterValuesForGivenCode(code):
 
         Returns a list of values possible for the given code
     '''
-    assert isinstance(code,str),f'the parameter of method should be a string but {type(code)} given'
-    assert code in _B_ATTR.keys(),f'the provided code is invalid. It must be among {_B_ATTR.keys()}'
+    try:
+        assert isinstance(code,str),f'the parameter of method should be a string but {type(code)} given'
+        assert code in _B_ATTR.keys(),f'the provided code is invalid. It must be among {_B_ATTR.keys()}'
+    except AssertionError as er:
+        logger.error(str(er))
+        raise er
     return _V_ATTR[f'V_{code}']
 
 def getMeasureCodesAndDescription():
@@ -74,16 +82,24 @@ def getParameterObject(param_type,parameter_selections={},o_params = {}):
 
         Returns a parameter object
     '''
-    assert isinstance(param_type,str) , f'the parameter of method should be a string but {type(param_type)} given'
-    param_type = param_type.upper()
-    assert param_type in ['B','F','I','M','O','V','MISC'] , f"the parameter of method should be one among {['B','F','I','M','O','V','MISC']} but {param_type} given"
+    try:
+        assert isinstance(param_type,str) , f'the parameter of method should be a string but {type(param_type)} given'
+        param_type = param_type.upper()
+        assert param_type in ['B','F','I','M','O','V','MISC'] , f"the parameter of method should be one among {['B','F','I','M','O','V','MISC']} but {param_type} given"
+    except AssertionError as er:
+        logger.error(str(er))
+        raise er
 
     if param_type == 'B':
         if parameter_selections == {}:
             parameter_selections = []
-        assert isinstance(parameter_selections,list), f"the parameter selections of B must be a list of B codes"
-        assert len(parameter_selections)<6, f"A max of 5 codes can be selected in order for group by operation"
-        assert set(parameter_selections) <= set(_B_ATTR.keys()), f"The list of selections can be only from among the B codes"
+        try:
+            assert isinstance(parameter_selections,list), f"the parameter selections of B must be a list of B codes"
+            assert len(parameter_selections)<6, f"A max of 5 codes can be selected in order for group by operation"
+            assert set(parameter_selections) <= set(_B_ATTR.keys()), f"The list of selections can be only from among the B codes"
+        except AssertionError as er:
+            logger.error(str(er))
+            raise er
         b_parameters = {
             "B_1": "D149.V20", # default selection is year
             "B_2": "*None*",
@@ -96,8 +112,12 @@ def getParameterObject(param_type,parameter_selections={},o_params = {}):
             b_parameters[b_keys[i]]=parameter_selections[i]
         return b_parameters
     elif param_type == 'M':
-        assert isinstance(parameter_selections,dict), f"the parameter selections of M must be a dict of M codes"
-        assert all([ x in list(_M_ATTR.keys()) and list(_M_ATTR[x].keys())[0] == parameter_selections[x] for x in parameter_selections]), f"The dict must follow M_ATTR data"
+        try:
+            assert isinstance(parameter_selections,dict), f"the parameter selections of M must be a dict of M codes"
+            assert all([ x in list(_M_ATTR.keys()) and list(_M_ATTR[x].keys())[0] == parameter_selections[x] for x in parameter_selections]), f"The dict must follow M_ATTR data"
+        except AssertionError as er:
+            logger.error(str(er))
+            raise er
         m_parameters = {
             "M_002": "D149.M002",   # Births, must be included
         }
@@ -105,20 +125,32 @@ def getParameterObject(param_type,parameter_selections={},o_params = {}):
             m_parameters[m_key] = parameter_selections[m_key]
         return m_parameters
     elif param_type == 'F':
-        assert parameter_selections == {}, f"cant select for F type"
+        try:
+            assert parameter_selections == {}, f"cant select for F type"
+        except AssertionError as er:
+            logger.error(str(er))
+            raise er
         f_parameters = {k:[list(v.keys())[0]] for (k,v) in _F_ATTR.items()}
         return f_parameters
     elif param_type == 'I':
-        assert parameter_selections == {}, f"cant select for I type"
+        try:
+            assert parameter_selections == {}, f"cant select for I type"
+        except AssertionError as er:
+            logger.error(str(er))
+            raise er
         i_parameters = {f'I{k[1:]}':[list(v.values())[0]] for (k,v) in _F_ATTR.items()}
         return i_parameters
     elif param_type == 'O':
-        assert isinstance(parameter_selections,dict), f"the parameter selections of O must be a dict of B codes"
-        assert isinstance(o_params,dict), f"the o params selections of O must be a dict of O codes"
-        assert len(parameter_selections.keys())<6, f"A max of 5 codes can be selected in order for group by operation"
-        assert set([ x for x in parameter_selections.values() if x != '*None*']) <= set(_B_ATTR.keys()), f"The list of selections can be only from among the B codes"
-        assert set(o_params.keys()) <= set(_O_ATTR.keys()), f"The list of selections can be only from among the O codes"
-        assert all([ o_params[x] in _O_ATTR[x] for x in o_params]), f"The list of selections can be only from among the O codes"
+        try:
+            assert isinstance(parameter_selections,dict), f"the parameter selections of O must be a dict of B codes"
+            assert isinstance(o_params,dict), f"the o params selections of O must be a dict of O codes"
+            assert len(parameter_selections.keys())<6, f"A max of 5 codes can be selected in order for group by operation"
+            assert set([ x for x in parameter_selections.values() if x != '*None*']) <= set(_B_ATTR.keys()), f"The list of selections can be only from among the B codes"
+            assert set(o_params.keys()) <= set(_O_ATTR.keys()), f"The list of selections can be only from among the O codes"
+            assert all([ o_params[x] in _O_ATTR[x] for x in o_params]), f"The list of selections can be only from among the O codes"
+        except AssertionError as er:
+            logger.error(str(er))
+            raise er
         o_parameters = {}
         for (k,v) in _O_ATTR.items():
             for key in v:
@@ -136,12 +168,20 @@ def getParameterObject(param_type,parameter_selections={},o_params = {}):
             o_parameters[o_key] = o_params[o_key]
         return o_parameters
     elif param_type == 'MISC':
-        assert parameter_selections == {}, f"cant select for MISC type"
+        try:
+            assert parameter_selections == {}, f"cant select for MISC type"
+        except AssertionError as er:
+            logger.error(str(er))
+            raise er
         return _MISC_ATTR
     else:
-        assert isinstance(parameter_selections,dict), f"The parameter selection can be only dict but {type(parameter_selections)}observed"
-        assert set(parameter_selections.keys()) <= set(_V_ATTR.keys()), f"The V codes must be valid"
-        assert all(isinstance(x[1],list) and set(x[1]) <= set(_V_ATTR[x[0]].keys()) for x in parameter_selections.items())
+        try:
+            assert isinstance(parameter_selections,dict), f"The parameter selection can be only dict but {type(parameter_selections)}observed"
+            assert set(parameter_selections.keys()) <= set(_V_ATTR.keys()), f"The V codes must be valid"
+            assert all(isinstance(x[1],list) and set(x[1]) <= set(_V_ATTR[x[0]].keys()) for x in parameter_selections.items())
+        except AssertionError as er:
+            logger.error(str(er))
+            raise er
         v_parameters = {k:[list(v.keys())[0]] for (k,v) in _V_ATTR.items()}
         for v_key in parameter_selections:
             v_parameters[v_key] = parameter_selections[v_key]
@@ -151,12 +191,20 @@ def sort_parameters(parameters):
     '''
     A helper method to sort dict based on keys
     '''
-    assert isinstance(parameters,dict),f"parameters must be dict"
+    try:
+        assert isinstance(parameters,dict),f"parameters must be dict"
+    except AssertionError as er:
+        logger.error(str(er))
+        raise er
     return collections.OrderedDict(sorted(parameters.items()))
 
 def createParameterList(parameterList):
     """Helper function to create a parameter list from a dictionary object"""
-    assert isinstance(parameterList,dict),f"parameters must be dict"
+    try:
+        assert isinstance(parameterList,dict),f"parameters must be dict"
+    except AssertionError as er:
+        logger.error(str(er))
+        raise er
 
     parameterString = ""
     
@@ -166,9 +214,9 @@ def createParameterList(parameterList):
         
         if isinstance(parameterList[key], list):
             for value in parameterList[key]:
-                parameterString += "<value>" + value + "</value>\n"
+                parameterString += "<value>" + str(value) + "</value>\n"
         else:
-            parameterString += "<value>" + parameterList[key] + "</value>\n"
+            parameterString += "<value>" + str(parameterList[key]) + "</value>\n"
         
         parameterString += "</parameter>\n"
         
@@ -178,9 +226,13 @@ def interpolateSeries(col,MAX_COL_LEN):
     '''
     A helper method to interpolate a given pandas series object to MAX_COL_LEN size
     '''
-    assert(isinstance(col,pd.Series))
-    assert(isinstance(MAX_COL_LEN,int))
-    assert(MAX_COL_LEN>0)
+    try:
+        assert(isinstance(col,pd.Series))
+        assert(isinstance(MAX_COL_LEN,int))
+        assert(MAX_COL_LEN>0)
+    except AssertionError as er:
+        logger.error(str(er))
+        raise er
     curr_col_len = len(col)
     new_index = list(range(0,MAX_COL_LEN,math.floor(MAX_COL_LEN/curr_col_len)))[:curr_col_len]
     col.index = new_index
@@ -190,8 +242,12 @@ def is_Different_Category(col_name1,col_name2):
     '''
     A helper method to verify if col_name1 and col_name2 belong to different category
     '''
-    assert(isinstance(col_name1,str))
-    assert(isinstance(col_name2,str))
+    try:
+        assert(isinstance(col_name1,str))
+        assert(isinstance(col_name2,str))
+    except AssertionError as er:
+        logger.error(str(er))
+        raise er
     cat1=''
     cat2=''
     categories = getGroupByCategories()
@@ -201,6 +257,12 @@ def is_Different_Category(col_name1,col_name2):
             cat1 = category
         if col_name2 in colnames:
             cat2 = category
+    try:
+        assert cat1 != '','category 1 is invalid'
+        assert cat2 != '','category 2 is invalid'
+    except AssertionError as er:
+        logger.error(str(er))
+        raise er
     return cat1 != cat2
 
 def getColumns():
@@ -260,17 +322,21 @@ def getBirthAnalysisData(cache=True):
         
         Returns a pandas dataframe
     '''
-    assert(isinstance(cache,bool))
+    try:
+        assert(isinstance(cache,bool))
+    except AssertionError as er:
+        logger.error(str(er))
+        raise er
     error_to_catch = getattr(__builtins__,'FileNotFoundError', IOError)
     if cache:
         try:
-            print('looking for cached values')
+            logger.info('looking for cached values')
             f = open(str(pathlib.Path(__file__).parent.absolute()) +'/data_column_birth_analysis.json','r')
             DATA = json.load(f)
             print('cached data found')
             return pd.DataFrame.from_dict(DATA)
         except error_to_catch:
-            print('Cache not found hence falling back to manual retrieval')
+            logger.error('Cache not found hence falling back to manual retrieval')
             return getBirthAnalysisDataManually()
     return getBirthAnalysisDataManually()
 
@@ -285,10 +351,14 @@ def createCorrelationGraph(corr_matrix,edges):
         edges: tuples of size 2 with column names
         Returns a Graph
     '''
-    assert(isinstance(corr_matrix,pd.DataFrame))
-    assert(isinstance(edges,list))
-    list_of_possible_tuples = itertools.product(corr_matrix.index,corr_matrix.columns)
-    assert(all([x in list_of_possible_tuples for x in edges]))
+    try:
+        assert(isinstance(corr_matrix,pd.DataFrame))
+        assert(isinstance(edges,list))
+        list_of_possible_tuples = itertools.product(corr_matrix.index,corr_matrix.columns)
+        assert(all([x in list_of_possible_tuples for x in edges]))
+    except AssertionError as er:
+        logger.error(str(er))
+        raise er
     set_of_nodes = set()
     for combi in edges:
         set_of_nodes = set_of_nodes.union(combi)
@@ -323,9 +393,13 @@ def plotNetworkGraph(G,title,path):
         Returns plot
 
     '''
-    assert(isinstance(G,nx.Graph))
-    assert(isinstance(title,str))
-    assert(isinstance(path,os.PathLike))
+    try:
+        assert(isinstance(G,nx.Graph))
+        assert(isinstance(title,str))
+        assert(isinstance(path,os.PathLike))
+    except AssertionError as er:
+        logger.error(str(er))
+        raise er
     #Establish which categories will appear when hovering over each node
     HOVER_TOOLTIPS = [("Feature Names", "@edge_nodes" ),("Correlation","@edge_length")]
 
@@ -353,7 +427,7 @@ def plotNetworkGraph(G,title,path):
 
     #Add network graph to the plot
     plot.renderers.append(network_graph)
-
+    logger.info(f'plot saving to file {path}/{title}.html')
     save(plot, filename=f"{path}/{title}.html")
     return plot
 

@@ -4,6 +4,7 @@
 
 beautifulsoup4==4.11.1
 bokeh==3.0.3
+coverage==7.2.1
 importlib-metadata==6.0.0
 ipykernel==6.20.1
 ipython==8.8.0

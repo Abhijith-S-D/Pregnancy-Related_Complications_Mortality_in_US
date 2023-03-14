@@ -45,9 +45,9 @@ Pregnancy risk factors
 
 The following is a listing of available values for each parameter name in the format:
 
-<value> : <description>
+{<value> : <description>}
 
-Abnormal conditions of newborn
+# Abnormal conditions of newborn
 
 'D149.V116': 'Assisted Ventilation'
 
@@ -63,7 +63,7 @@ Abnormal conditions of newborn
 
 'D149.V122': 'Abnormal Conditions Checked'
 
-Congenital anomalies of newborn
+# Congenital anomalies of newborn
 
 'D149.V123': 'Anencephaly'
 
@@ -91,7 +91,7 @@ Congenital anomalies of newborn
 
 'D149.V135': 'Congenital Anomalies Checked'
 
-Delivery characteristics
+# Delivery characteristics
 
 'D149.V20': 'Year'
 
@@ -125,7 +125,7 @@ Delivery characteristics
 
 'D149.V109': 'Source of Payment for Delivery Expanded'
 
-Infant characteristics
+# Infant characteristics
 
 'D149.V32': 'OE Gestational Age Recode 10'
 
@@ -165,7 +165,7 @@ Infant characteristics
 
 'D149.V138': 'Infant Breastfed at Discharge'
 
-Maternal Residence
+# Maternal Residence
 
 'D149.V154': '2013 Metro/Nonmetro'
 
@@ -173,7 +173,7 @@ Maternal Residence
 
 'D149.V156': '2006 Urbanization'
 
-Maternal characteristics
+# Maternal characteristics
 
 'D149.V42': "Mother's Single Race 6"
 
@@ -201,7 +201,7 @@ Maternal characteristics
 
 'D149.V47': "Mother's Birth State"
 
-Maternal infections present and/or treated during pregnancy
+# Maternal infections present and/or treated during pregnancy
 
 'D149.V83': 'Gonorrhea'
 
@@ -215,7 +215,7 @@ Maternal infections present and/or treated during pregnancy
 
 'D149.V88': 'Infections Checked'
 
-Maternal morbidity
+# Maternal morbidity
 
 'D149.V102': 'Maternal Transfusion'
 
@@ -229,7 +229,7 @@ Maternal morbidity
 
 'D149.V107': 'Maternal Morbidity Checked'
 
-Maternal risk factors
+# Maternal risk factors
 
 'D149.V70': "Mother's Height in Inches"
 
@@ -257,7 +257,7 @@ Maternal risk factors
 
 'D149.V142': 'Number of Cigarettes 3rd Trimester'
 
-Paternal characteristics
+# Paternal characteristics
 
 'D149.V54': "Father's Single Race 6"
 
@@ -273,7 +273,7 @@ Paternal characteristics
 
 'D149.V58': "Father's Education"
 
-Pregnancy history and prenatal care characteristics
+# Pregnancy history and prenatal care characteristics
 
 'D149.V60': 'Interval Since Last Live Birth'
 
@@ -302,9 +302,11 @@ Pregnancy history and prenatal care characteristics
 'D149.V64': 'SNumber of Prenatal Visits'
 
 'D149.V63': 'Trimester Prenatal Care Began'
+
 'D149.V8': 'Month Prenatal Care Began'
 
-Pregnancy risk factors
+# Pregnancy risk factors
+
 'D149.V74': 'Pre-pregnancy Diabetes'
 
 'D149.V75': 'Gestational Diabetes'
@@ -316,6 +318,7 @@ Pregnancy risk factors
 'D149.V18': 'Eclampsia'
 
 'D149.V76': 'Previous Preterm Birth'
+
 'D149.V77': 'Infertility Treatment Used'
 
 'D149.V78': 'Fertility Enhancing Drugs'
@@ -329,7 +332,7 @@ Pregnancy risk factors
 'D149.V82': 'Risk Factors Checked'
  
 
-M - Measure Parameters
+## M - Measure Parameters
 
 <name> :{ <value> - <description>}
 
@@ -372,8 +375,8 @@ M - Measure Parameters
 
 
 
-# An example implementation:
-group_by_list = [
+## An Example Implementation:
+{group_by_list = [
 
     'D149.V20', # Years
 
@@ -401,4 +404,4 @@ variable_filter = {
 
 dataObj = wd.WonderD149Data(group_by_list,measure_selection,observation_selection,variable_filter)
 
-dataObj.getData()
+dataObj.getData()}

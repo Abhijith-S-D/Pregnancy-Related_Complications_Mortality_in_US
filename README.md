@@ -376,32 +376,28 @@ The following is a listing of available values for each parameter name in the fo
 
 
 ## An Example Implementation:
-{group_by_list = [
+{
+  group_by_list = [
 
     'D149.V20', # Years
 
-    'D149.V71', #Tobacco Use
+    'D149.V71', #Tobacco Use]
 
-]
-
-measure_selection = {
+   measure_selection = {
 
     'M_002': 'D149.M002', # Births
 
     'M_007': 'D149.M007', # Percent of Total Births
 
-    'M_070': 'D149.M070', # Average Age of Mother (years)
+    'M_070': 'D149.M070', # Average Age of Mother (years)}
 
+   observation_selection = {}
+
+   variable_filter = {
+
+    'V_D149.V71': ['1','2','3','4'] # filtering only stated deliveries}
+
+  dataObj = wd.WonderD149Data(group_by_list,measure_selection,observation_selection,variable_filter)
+
+  dataObj.getData()
 }
-
-observation_selection = {}
-
-variable_filter = {
-
-    'V_D149.V71': ['1','2','3','4'] # filtering only stated deliveries
-
-}
-
-dataObj = wd.WonderD149Data(group_by_list,measure_selection,observation_selection,variable_filter)
-
-dataObj.getData()}

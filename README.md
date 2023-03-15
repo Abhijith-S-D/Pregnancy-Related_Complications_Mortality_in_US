@@ -371,12 +371,78 @@ The following is a listing of available values for each parameter name in the fo
 'M_130': {'D149.M130': 'Average Interval Since Last Other Pregnancy Outcome (months)'}
 
 'M_131': {'D149.M130': 'Average Interval Since Last Other Pregnancy Outcome (months) Standard Deviation'}
+# Requirements: 
 
+These are already given in requirements.txt, please follow pip install requirements.txt
 
+beautifulsoup4==4.11.1
+
+bokeh==3.0.3
+
+coverage==7.2.1
+
+importlib-metadata==6.0.0
+
+ipykernel==6.20.1
+
+ipython==8.8.0
+
+ipython-genutils==0.2.0
+
+json5==0.9.11
+
+jsonpointer==2.3
+
+jsonschema==4.17.3
+
+jupyter-client==7.4.9
+
+jupyter-core==5.1.3
+
+jupyter-events==0.6.3
+
+jupyter-server==2.1.0
+
+jupyter-server-terminals==0.4.4
+
+jupyterlab==3.5.2
+
+jupyterlab-pygments==0.2.2
+
+jupyterlab-server==2.18.0
+
+lxml==4.9.2
+
+matplotlib==3.6.3
+
+matplotlib-inline==0.1.6
+
+networkx==3.0
+
+notebook==6.5.2
+
+numpy==1.24.2
+
+pandas==1.5.3
+
+pip==23.0.1
+
+pytest==7.2.1
+
+python-dateutil==2.8.2
+
+python-json-logger==2.0.4
+
+requests==2.28.1
+
+requests-oauthlib==1.3.1
+
+wheel==0.37.1
 
 
 ## An Example Implementation:
-{
+[
+
   group_by_list = [
 
     'D149.V20', # Years
@@ -400,4 +466,5 @@ The following is a listing of available values for each parameter name in the fo
   dataObj = wd.WonderD149Data(group_by_list,measure_selection,observation_selection,variable_filter)
 
   dataObj.getData()
-}
+  
+]

@@ -23,33 +23,33 @@ def create_panda_and_plot_4_combined (input_dict, bmi_keys):
                     color_discrete_sequence=["rgb(255, 152, 90)", "rgb(119, 158, 204)", "rgb(255, 179, 71)", "rgb(48, 153, 217)"],
                     labels={"Single Race 6": "Single Race"})
 
-    # fig.update_layout(title={
-    #                 'text':'Percentage of Patiants experiencing complications during Pregnency v/a their BMI',
-    #                 'xanchor': 'center',
-    #                 'yanchor': 'top',
-    #                 'x': 0.5},
-    #                 yaxis_title={'text': 'Percentage of Patiants experienced issues'},
-    #                 xaxis_title={'text': 'BMI'})
-    # fig.update_layout(
-    #     font_family="Verdana",
-    #     font_color="black",
-    #     font_size = 24,
-    #     title_font_family="Verdana",
-    #     title_font_color="black",
-    #     title_font_size=28,
-    #     legend_title_font_color="black"
-    # )
+    fig.update_layout(title={
+                    'text':'Percentage of Patiants experiencing complications during Pregnency v/a their BMI',
+                    'xanchor': 'center',
+                    'yanchor': 'top',
+                    'x': 0.5},
+                    yaxis_title={'text': 'Percentage of Patiants experienced issues'},
+                    xaxis_title={'text': 'BMI'})
+    fig.update_layout(
+        font_family="Verdana",
+        font_color="black",
+        font_size = 24,
+        title_font_family="Verdana",
+        title_font_color="black",
+        title_font_size=28,
+        legend_title_font_color="black"
+    )
 
-    # fig.show(renderer='png', height=900, width=1800)
+    fig.show(renderer='png', height=900, width=1800)
 
-def create_panda_and_plot_3_combined (input_dict, bmi_keys):
+def create_panda_and_plot_3_combined (input_dict, bmi_keys, x_axis):
 # Convert dictionary to Pandas DataFrame
     df = pd.DataFrame(input_dict)
 
     print(df)
 
     fig = px.histogram(df, 
-                    x='bmi', 
+                    x=x_axis, 
                     y='value',
                     color='issue', 
                     barmode='group',
@@ -57,24 +57,24 @@ def create_panda_and_plot_3_combined (input_dict, bmi_keys):
                     color_discrete_sequence=["rgb(255, 152, 90)", "rgb(119, 158, 204)", "rgb(255, 179, 71)"],
                     labels={"Single Race 6": "Single Race"})
 
-    # fig.update_layout(title={
-    #                 'text':'Percentage of Patiants experiencing complications during Pregnency v/a their BMI',
-    #                 'xanchor': 'center',
-    #                 'yanchor': 'top',
-    #                 'x': 0.5},
-    #                 yaxis_title={'text': 'Percentage of Patiants experienced issues'},
-    #                 xaxis_title={'text': 'BMI'})
-    # fig.update_layout(
-    #     font_family="Verdana",
-    #     font_color="black",
-    #     font_size = 24,
-    #     title_font_family="Verdana",
-    #     title_font_color="black",
-    #     title_font_size=28,
-    #     legend_title_font_color="black"
-    # )
+    fig.update_layout(title={
+                    'text':'Percentage of Patiants experiencing complications during Pregnency v/a their BMI',
+                    'xanchor': 'center',
+                    'yanchor': 'top',
+                    'x': 0.5},
+                    yaxis_title={'text': 'Percentage of Patiants experienced issues'},
+                    xaxis_title={'text': 'BMI'})
+    fig.update_layout(
+        font_family="Verdana",
+        font_color="black",
+        font_size = 24,
+        title_font_family="Verdana",
+        title_font_color="black",
+        title_font_size=28,
+        legend_title_font_color="black"
+    )
 
-    # fig.show(renderer='png', height=900, width=1800)
+    fig.show(renderer='png', height=900, width=1800)
 
 def main():
 
@@ -196,6 +196,46 @@ def main():
     bmi_keys = list(gestationalDiabetes_vs_BMI.keys())
     # print(incresing_new_dict)
     create_panda_and_plot_4_combined(incresing_new_dict, bmi_keys)
-    create_panda_and_plot_3_combined(ushaped_new_dict, bmi_keys)
+    create_panda_and_plot_3_combined(ushaped_new_dict, bmi_keys, x_axis='bmi')
+
+    ##for cigrates
+    AbnormalConditions_vs_CigarettesSmokedPerDay = {
+    "Nonsmoker": 11.5512,
+    "1-5": 17.3338,
+    "6-10": 17.8241,
+    "11-20": 19.2423,
+    "21-40": 20.3881,
+    # "41 or more": 18.6839
+    }
+    CSections_vs_CiarettesSmokedPerDay = {
+    "Nonsmoker": 31.914,
+    "1-5": 35.067,
+    "6-10": 35.555,
+    "11-20": 36.307,
+    "21-40": 36.723
+    }
+    PreTerm_vs_CiarettesSmokedPerDay =  {
+    "Nonsmoker":   10.219,
+    "1-5": 	15.02,
+    "6-10":  	15.53,
+    "11-20":  	16.50,
+    "21-40": 	17.16,
+    # "41 or more":   15.000
+    }
+
+    combined_dict_for_tobaco = {
+        'Pre-term Births' : PreTerm_vs_CiarettesSmokedPerDay,
+        'C-Section (mode)' : CSections_vs_CiarettesSmokedPerDay,
+        'Abnormalities conditions of newborn' : AbnormalConditions_vs_CigarettesSmokedPerDay,
+    }
+
+    dict_for_tobaco = {'issue': [], 'num of cigs per day': [], 'value': []}
+    for key, value in combined_dict_for_tobaco.items():
+        for key_d, value_d in PreTerm_vs_CiarettesSmokedPerDay.items():
+            dict_for_tobaco['issue'].append(key)
+            dict_for_tobaco['num of cigs per day'].append(key_d)
+            dict_for_tobaco['value'].append(value[key_d])
+    
+    create_panda_and_plot_3_combined(dict_for_tobaco, list(PreTerm_vs_CiarettesSmokedPerDay.keys()), 'num of cigs per day')
 
 main()

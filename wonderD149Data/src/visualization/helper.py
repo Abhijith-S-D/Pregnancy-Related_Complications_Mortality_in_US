@@ -111,20 +111,20 @@ fig = px.histogram(df,
                    color_discrete_sequence=["rgb(255, 152, 90)", "rgb(119, 158, 204)", "rgb(255, 179, 71)", "rgb(255, 152, 90)", "rgb(119, 158, 204)", "rgb(255, 179, 71)", "rgb(48, 153, 217)"],
                    labels={"Single Race 6": "Single Race"})
 
-# fig.update_layout(title={
-#                   'text':'Maternal Mortality Ratio per 100,000 Live Births by Year and Race',
-#                   'xanchor': 'center',
-#                   'yanchor': 'top',
-#                   'x': 0.5},
-#                   yaxis_title={'text': 'MMR per 100,000 Live Births'},
-#                   xaxis_title={'text': 'Years'})
-# fig.update_layout(
-#     font_family="Verdana",
-#     font_color="black",
-#     font_size = 24,
-#     title_font_family="Verdana",
-#     title_font_color="black",
-#     title_font_size=28,
-#     legend_title_font_color="black"
-# )
-# fig.show(renderer='png', height=900, width=1800)
+fig.update_layout(title={
+                  'text':'Maternal Mortality Ratio per 100,000 Live Births by Year and Race',
+                  'xanchor': 'center',
+                  'yanchor': 'top',
+                  'x': 0.5},
+                  yaxis_title={'text': 'MMR per 100,000 Live Births'},
+                  xaxis_title={'text': 'Years'})
+fig.update_layout(
+    font_family="Verdana",
+    font_color="black",
+    font_size = 24,
+    title_font_family="Verdana",
+    title_font_color="black",
+    title_font_size=28,
+    legend_title_font_color="black"
+)
+fig.show(renderer='png', height=900, width=1800)

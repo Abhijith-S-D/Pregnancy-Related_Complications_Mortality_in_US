@@ -24,11 +24,11 @@ def create_panda_and_plot_4_combined (input_dict, bmi_keys):
                     labels={"Single Race 6": "Single Race"})
 
     fig.update_layout(title={
-                    'text':'Percentage of Patiants experiencing complications during Pregnency v/a their BMI',
+                    'text':'Percentage of Patients Experiencing Pregnancy Complications by BMI',
                     'xanchor': 'center',
                     'yanchor': 'top',
                     'x': 0.5},
-                    yaxis_title={'text': 'Percentage of Patiants experienced issues'},
+                    yaxis_title={'text': 'Percentage of Patients'},
                     xaxis_title={'text': 'BMI'})
     fig.update_layout(
         font_family="Verdana",
@@ -58,11 +58,11 @@ def create_panda_and_plot_3_combined (input_dict, bmi_keys, x_axis):
                     labels={"Single Race 6": "Single Race"})
 
     fig.update_layout(title={
-                    'text':'Percentage of Patiants experiencing complications during Pregnency v/a their BMI',
+                    'text':'Percentage of Patients Experiencing Pregnancy Complications by BMI',
                     'xanchor': 'center',
                     'yanchor': 'top',
                     'x': 0.5},
-                    yaxis_title={'text': 'Percentage of Patiants experienced issues'},
+                    yaxis_title={'text': 'Percentage of Patients'},
                     xaxis_title={'text': 'BMI'})
     fig.update_layout(
         font_family="Verdana",

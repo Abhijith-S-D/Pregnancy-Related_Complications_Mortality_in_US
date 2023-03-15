@@ -71,44 +71,60 @@ anti_vs_BMI =  {
 ">39.9" : 12.543,
 }
 
-combined_dict = {'Gest' : list(gestationalDiabetes_vs_BMI.values()),
-                 'csec' : list(cSection_vs_BMI.values()),
-                 'preterm' : list(preTermBirth_vs_BMI.values()),
-                 'induction' : list(inductionOfLabor_vs_BMI.values()),
-                 'anes' : list(anesthesia_vs_BMI.values()),
-                 'cho' : list(chotio_vs_BMI.values()),
-                 'anti' : list(anti_vs_BMI.values()),
+combined_dict = {
+                #  'bmi' : list(gestationalDiabetes_vs_BMI.keys()),
+                 'Gest' : gestationalDiabetes_vs_BMI,
+                 'csec' : cSection_vs_BMI,
+                 'preterm' : preTermBirth_vs_BMI,
+                 'induction' : inductionOfLabor_vs_BMI,
+                 'anes' : anesthesia_vs_BMI,
+                 'cho' : chotio_vs_BMI,
+                 'anti' : anti_vs_BMI,
                  }
 
-dict_name = combined_dict
-x_value = 'BMI'
-# y_value = f'% Gestational Diabetes'
-# title_name = y_value  + " vs " + x_value
+# print(combined_dict)
+
+# issue
+# bmi
+# value
+
+new_dict = {'issue': [], 'bmi': [], 'value': []}
+for key, value in combined_dict.items():
+    for key_d, value_d in gestationalDiabetes_vs_BMI.items():
+        new_dict['issue'].append(key)
+        new_dict['bmi'].append(key_d)
+        new_dict['value'].append(value[key_d])
+
+# print(new_dict)
 
 # Convert dictionary to Pandas DataFrame
-df = pd.DataFrame(dict_name, index=gestationalDiabetes_vs_BMI.keys())
+df = pd.DataFrame(new_dict)
 
 print(df)
 
-fig = px.histogram(df, x="BMI", y=f'percentage birth',
-                   color='Single Race 6', barmode='group',
-                   category_orders={"Single Race 6":list(combined_dict.keys())},
+fig = px.histogram(df, 
+                   x='bmi', 
+                   y='value',
+                   color='issue', 
+                   barmode='group',
+                   category_orders={'bmi':list(gestationalDiabetes_vs_BMI.keys())},
                    color_discrete_sequence=["rgb(255, 152, 90)", "rgb(119, 158, 204)", "rgb(255, 179, 71)", "rgb(255, 152, 90)", "rgb(119, 158, 204)", "rgb(255, 179, 71)", "rgb(48, 153, 217)"],
                    labels={"Single Race 6": "Single Race"})
-fig.update_layout(title={
-                  'text':'Maternal Mortality Ratio per 100,000 Live Births by Year and Race',
-                  'xanchor': 'center',
-                  'yanchor': 'top',
-                  'x': 0.5},
-                  yaxis_title={'text': 'MMR per 100,000 Live Births'},
-                  xaxis_title={'text': 'Years'})
-fig.update_layout(
-    font_family="Verdana",
-    font_color="black",
-    font_size = 24,
-    title_font_family="Verdana",
-    title_font_color="black",
-    title_font_size=28,
-    legend_title_font_color="black"
-)
-fig.show(renderer='png', height=900, width=1800)
+
+# fig.update_layout(title={
+#                   'text':'Maternal Mortality Ratio per 100,000 Live Births by Year and Race',
+#                   'xanchor': 'center',
+#                   'yanchor': 'top',
+#                   'x': 0.5},
+#                   yaxis_title={'text': 'MMR per 100,000 Live Births'},
+#                   xaxis_title={'text': 'Years'})
+# fig.update_layout(
+#     font_family="Verdana",
+#     font_color="black",
+#     font_size = 24,
+#     title_font_family="Verdana",
+#     title_font_color="black",
+#     title_font_size=28,
+#     legend_title_font_color="black"
+# )
+# fig.show(renderer='png', height=900, width=1800)

@@ -5,6 +5,7 @@ from bokeh.io import save
 from bokeh.models import Range1d, Circle, NodesAndLinkedEdges, MultiLine,EdgesAndLinkedNodes
 from bokeh.plotting import figure, from_networkx
 from bokeh.palettes import Spectral4
+import plotly_express as px
 from ..data import B_ATTR as _B_ATTR, V_ATTR as _V_ATTR, M_ATTR as _M_ATTR, F_ATTR as _F_ATTR, O_ATTR as _O_ATTR, MISC_ATTR as _MISC_ATTR, log as logger
 from ..wonderD149Data import WonderD149Data
 
@@ -431,4 +432,124 @@ def plotNetworkGraph(G,title,path):
     save(plot, filename=f"{path}/{title}.html")
     return plot
 
-__all__ = ['getGroupByCategories', 'getColumns', 'getCodeDetailsForGivenCategory', 'getFilterValuesForGivenCode', 'getMeasureCodesAndDescription','getParameterObject','sort_parameters','createParameterList','interpolateSeries','is_Different_Category','getBirthAnalysisData','createCorrelationGraph','plotNetworkGraph']
+def get_percent_data(data,issue_column,major_column):
+    '''
+    get percent data for yes and no
+
+    Returns data
+    '''
+    assert isinstance(data,pd.DataFrame)
+    assert isinstance(issue_column,str)
+    assert isinstance(major_column,str)
+    assert 'Births' in data.columns
+    yes = data[data[issue_column]=='Yes']
+    no = data[data[issue_column]=='No']
+    yes['Total'] = yes['Births'].to_numpy()+no['Births'].to_numpy()
+    yes['Percent of Mother Facing Issue'] = (yes['Births']/yes['Total'])*100
+    yes['Issue']=issue_column
+    res =yes[[major_column,"Percent of Mother Facing Issue","Issue"]].reset_index()[[major_column,"Percent of Mother Facing Issue","Issue"]]
+    return res
+
+def merge_dataframe_on_yes_and_no(yes_data,no_data,column,issue):
+    '''
+    a method to create yes no data required for plotting
+
+    Returns required dataframe
+    '''
+    assert isinstance(yes_data,pd.DataFrame)
+    assert isinstance(no_data,pd.DataFrame)
+    assert 'Births' in yes_data.columns
+    assert 'Births' in no_data.columns
+    assert isinstance(column,str)
+    assert isinstance(issue,str)
+    yes_data[issue]='Yes'
+    no_data[issue]='No'
+    yes = yes_data['Births'].to_numpy()
+    no =no_data['Births'].to_numpy()
+    percent = (yes/(yes+no))*100
+    yes_data['Percent of Mother Facing Issue'] = percent
+    yes_data = yes_data[[column,"Percent of Mother Facing Issue"]]
+    yes_data['Issue'] = issue
+    return yes_data
+
+def plot_line(final_df,x_col,title_text):
+    '''
+      Method to plot line graph
+
+      Returns a fig
+    '''
+    assert isinstance(final_df,pd.DataFrame)
+    assert isinstance(x_col,str)
+    assert isinstance(title_text,str)
+    assert x_col in final_df.columns
+    assert "Percent of Mother Facing Issue" in final_df.columns
+    assert "Issue" in final_df.columns
+    fig = px.line(final_df,
+              x=x_col,
+              y="Percent of Mother Facing Issue",
+              color="Issue",
+              color_discrete_sequence=["rgb(255, 152, 90)", "rgb(119, 158, 204)", "rgb(255, 179, 71)", "rgb(48, 153, 217)"],
+            #   trendline="ols",
+            #    marginal_x="violin",
+            #    marginal_y="box",
+              width=1800,height=900)
+    fig.update_layout(title={
+                      'text':title_text,
+                      'xanchor': 'center',
+                      'yanchor': 'top',
+                      'x': 0.5},
+                      yaxis_title={'text': 'Percent of Mother Facing Issue'},
+                      xaxis_title={'text': x_col})
+
+    fig.update_layout(
+        font_family="Verdana",
+        font_color="black",
+        font_size = 24,
+        title_font_family="Verdana",
+        title_font_color="black",
+        title_font_size=28,
+        legend_title_font_color="black"
+    )
+    return fig
+
+def plot_histogram(final_df,x_col,title_text):
+    '''
+      Method to plot histogram graph
+
+      Returns a fig
+    '''
+    assert isinstance(final_df,pd.DataFrame)
+    assert isinstance(x_col,str)
+    assert isinstance(title_text,str)
+    assert x_col in final_df.columns
+    assert "Percent of Mother Facing Issue" in final_df.columns
+    assert "Issue" in final_df.columns
+    fig = px.histogram(final_df,
+              x=x_col,
+              y="Percent of Mother Facing Issue",
+              color="Issue",
+              color_discrete_sequence=["rgb(255, 152, 90)", "rgb(119, 158, 204)", "rgb(255, 179, 71)", "rgb(48, 153, 217)"],
+            #   trendline="ols",
+            #    marginal_x="violin",
+            #    marginal_y="box",
+              width=1800,height=900)
+    fig.update_layout(title={
+                      'text':title_text,
+                      'xanchor': 'center',
+                      'yanchor': 'top',
+                      'x': 0.5},
+                      yaxis_title={'text': 'Percent of Mother Facing Issue'},
+                      xaxis_title={'text': x_col})
+
+    fig.update_layout(
+        font_family="Verdana",
+        font_color="black",
+        font_size = 24,
+        title_font_family="Verdana",
+        title_font_color="black",
+        title_font_size=28,
+        legend_title_font_color="black"
+    )
+    return fig
+
+__all__ = ['getGroupByCategories', 'getColumns', 'getCodeDetailsForGivenCategory', 'getFilterValuesForGivenCode', 'getMeasureCodesAndDescription','getParameterObject','sort_parameters','createParameterList','interpolateSeries','is_Different_Category','getBirthAnalysisData','createCorrelationGraph','plotNetworkGraph','get_percent_data','merge_dataframe_on_yes_and_no','plot_line','plot_histogram']

@@ -3,6 +3,8 @@ import pandas as pd
 import networkx as nx
 from pathlib import Path
 from bokeh.plotting import figure
+import plotly_express as px
+from plotly.graph_objects import Figure
 from ..src.wonderD149Data.data import helper as hp
 from ..src.wonderD149Data.wonderD149Data import WonderD149Data
 
@@ -39,6 +41,99 @@ def col_data():
     col_data = pd.Series(data_col['Births'])
     col_data.name = columns[code]
     return col_data
+
+@pytest.fixture(scope='session')
+def induction_of_labour_data():
+    group_by_list = [
+        'D149.V71', # Mother's Pre-pregnancy BMI
+        'D149.V91', #Induction of Labor
+    ]
+    measure_selection = {
+        'M_002': 'D149.M002', # Births
+    }
+    observation_selection = {}
+    variable_filter = {
+        'V_D149.V91': ['1','2'], # filtering only yes and no
+        'V_D149.V71': ['1','2','3','4','5','6'], # filtering only required BMI
+    }
+    dataObj = WonderD149Data(group_by_list,measure_selection,observation_selection,variable_filter)
+    induction_of_labour = dataObj.getData()
+    data = hp.get_percent_data(induction_of_labour,'Induction of Labor',"Mother's Pre-pregnancy BMI")
+    return data
+
+@pytest.fixture(scope='session')
+def preterm_birth_cigar_yes_data():
+    group_by_list = [
+    'D149.V144', # Number of Cigarettes 1st Trimester Recode
+    ]
+    measure_selection = {
+        'M_002': 'D149.M002', # Births
+    }
+    observation_selection = {
+        'O_oe_gestation':'D149.V33'
+    }
+    variable_filter = {
+        'V_D149.V33': ['01','02','03','04','05'], # filtering only yes and no
+        'V_D149.V144': ['0','1','2','3','4'], # filtering only cigar values
+    }
+    dataObj = WonderD149Data(group_by_list,measure_selection,observation_selection,variable_filter)
+    data_col = dataObj.getData()
+    return data_col
+
+@pytest.fixture(scope='session')
+def preterm_birth_cigar_no_data():
+    group_by_list = [
+    'D149.V144', # Number of Cigarettes 1st Trimester Recode
+    ]
+    measure_selection = {
+        'M_002': 'D149.M002', # Births
+    }
+    observation_selection = {
+        'O_oe_gestation':'D149.V33'
+    }
+    variable_filter = {
+        'V_D149.V33': ['06','07','08','09','10'], # filtering only yes and no
+        'V_D149.V144': ['0','1','2','3','4'], # filtering only required cigar values
+    }
+    dataObj = WonderD149Data(group_by_list,measure_selection,observation_selection,variable_filter)
+    data_col = dataObj.getData()
+    return data_col
+
+@pytest.fixture(scope='session')
+def abnormalities_cigar_yes_data():
+    group_by_list = [
+    'D149.V144', # Number of Cigarettes 1st Trimester Recode
+    ]
+    measure_selection = {
+        'M_002': 'D149.M002', # Births
+    }
+    observation_selection = {
+    }
+    variable_filter = {
+        'V_D149.V122': ['0'], # filtering only yes and no
+        'V_D149.V144': ['0','1','2','3','4'], # filtering only required cigar values
+    }
+    dataObj = WonderD149Data(group_by_list,measure_selection,observation_selection,variable_filter)
+    data_col = dataObj.getData()
+    return data_col
+
+@pytest.fixture(scope='session')
+def abnormalities_cigar_no_data():
+    group_by_list = [
+    'D149.V144', # Number of Cigarettes 1st Trimester Recode
+    ]
+    measure_selection = {
+        'M_002': 'D149.M002', # Births
+    }
+    observation_selection = {
+    }
+    variable_filter = {
+        'V_D149.V122': ['1','9'], # filtering only yes and no
+        'V_D149.V144': ['0','1','2','3','4'], # filtering only required cigar values
+    }
+    dataObj = WonderD149Data(group_by_list,measure_selection,observation_selection,variable_filter)
+    data_col = dataObj.getData()
+    return data_col
 
 def test_getGroupByCategories():
     '''
@@ -146,3 +241,37 @@ def test_plotNetworkGraph(plot_data):
         Test plot
     '''
     assert isinstance(plot_data,figure)
+
+def test_get_percent_data(induction_of_labour_data):
+    '''
+        Test percent data
+    '''
+    assert isinstance(induction_of_labour_data,pd.DataFrame)
+
+def test_merge_dataframe_on_yes_and_no(preterm_birth_cigar_yes_data,preterm_birth_cigar_no_data):
+    '''
+        Test the working of yes and no
+    '''
+    preterm_birth_cigar = hp.merge_dataframe_on_yes_and_no(preterm_birth_cigar_yes_data,preterm_birth_cigar_no_data,'Number of Cigarettes 1st Trimester Recode','Pre Term Birth')
+    assert isinstance(preterm_birth_cigar,pd.DataFrame)
+
+def test_plot_line(preterm_birth_cigar_yes_data,preterm_birth_cigar_no_data,abnormalities_cigar_yes_data,abnormalities_cigar_no_data):
+    '''
+        Test plot line
+    '''
+    preterm_birth_cigar = hp.merge_dataframe_on_yes_and_no(preterm_birth_cigar_yes_data,preterm_birth_cigar_no_data,'Number of Cigarettes 1st Trimester Recode','Pre Term Birth')
+    abnormalities_cigar = hp.merge_dataframe_on_yes_and_no(abnormalities_cigar_yes_data,abnormalities_cigar_no_data,'Number of Cigarettes 1st Trimester Recode','Abnormality')
+    final_df_cigar = pd.concat([preterm_birth_cigar,abnormalities_cigar]).reset_index()[["Number of Cigarettes 1st Trimester Recode","Percent of Mother Facing Issue","Issue"]]
+    fig = hp.plot_line(final_df_cigar,"Number of Cigarettes 1st Trimester Recode",'Effect of Cigarettes on Pregnancy')
+    assert isinstance(fig,Figure)
+
+
+def test_plot_histogram(preterm_birth_cigar_yes_data,preterm_birth_cigar_no_data,abnormalities_cigar_yes_data,abnormalities_cigar_no_data):
+    '''
+        Test plot line
+    '''
+    preterm_birth_cigar = hp.merge_dataframe_on_yes_and_no(preterm_birth_cigar_yes_data,preterm_birth_cigar_no_data,'Number of Cigarettes 1st Trimester Recode','Pre Term Birth')
+    abnormalities_cigar = hp.merge_dataframe_on_yes_and_no(abnormalities_cigar_yes_data,abnormalities_cigar_no_data,'Number of Cigarettes 1st Trimester Recode','Abnormality')
+    final_df_cigar = pd.concat([preterm_birth_cigar,abnormalities_cigar]).reset_index()[["Number of Cigarettes 1st Trimester Recode","Percent of Mother Facing Issue","Issue"]]
+    fig = hp.plot_histogram(final_df_cigar,"Number of Cigarettes 1st Trimester Recode",'Effect of Cigarettes on Pregnancy')
+    assert isinstance(fig,Figure)
